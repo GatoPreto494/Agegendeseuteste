@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -113,17 +114,17 @@
         }
         .main-header .container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Centraliza o conteúdo horizontalmente */
             align-items: center;
         }
-        .main-header .logo img {
-            height: 50px; /* Tamanho do logo */
-            vertical-align: middle;
-        }
+        /* REMOVIDO: .main-header .logo img { ... } */
+
         .main-nav ul {
             list-style: none;
             display: flex;
             gap: 25px;
+            justify-content: center; /* CENTRALIZADO AQUI */
+            flex-grow: 1; /* Permite que o menu ocupe o espaço disponível para centralizar melhor */
         }
         .main-nav ul li a {
             text-decoration: none;
@@ -362,71 +363,8 @@
             font-size: 1em;
             color: rgba(255, 255, 255, 0.9);
         }
-        /* --- 6. Rodapé (Footer) --- */
-        .main-footer {
-            background-color: var(--background-dark);
-            color: var(--card-bg);
-            padding: 60px 0 20px 0;
-            font-size: 0.9em;
-        }
-        .main-footer .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-            text-align: left;
-        }
-        .main-footer .footer-col h4 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 1.2em;
-            text-align: left; /* Alinha o título do rodapé */
-        }
-        .main-footer .footer-col ul {
-            list-style: none;
-        }
-        .main-footer .footer-col ul li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .main-footer .footer-col ul li i {
-            color: var(--primary-color);
-        }
-        .main-footer .footer-col ul li a {
-            color: var(--card-bg);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .main-footer .footer-col ul li a:hover {
-            color: var(--primary-color);
-        }
-        .main-footer .footer-logo {
-            height: 60px; /* Tamanho do logo no rodapé */
-            margin-bottom: 15px;
-        }
-        .main-footer .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .main-footer .social-icons a {
-            color: var(--card-bg);
-            font-size: 1.5em;
-            transition: color 0.3s ease;
-        }
-        .main-footer .social-icons a:hover {
-            color: var(--primary-color);
-        }
-        .main-footer .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 20px;
-            font-size: 0.8em;
-            opacity: 0.8;
-        }
+        /* REMOVIDO: Rodapé (Footer) */
+
         /* --- Responsividade (Media Queries) --- */
         @media (max-width: 992px) {
             h1 { font-size: 2.8em; }
@@ -497,23 +435,7 @@
             .steps-grid {
                 grid-template-columns: 1fr; /* Uma coluna em telas menores */
             }
-            .main-footer .footer-content {
-                grid-template-columns: 1fr; /* Uma coluna no rodapé */
-                text-align: center;
-            }
-            .main-footer .footer-col h4 {
-                text-align: center;
-                margin-top: 20px;
-            }
-            .main-footer .footer-col ul {
-                padding-left: 0;
-            }
-            .main-footer .footer-col ul li {
-                justify-content: center; /* Centraliza itens da lista */
-            }
-            .main-footer .social-icons {
-                justify-content: center;
-            }
+            /* REMOVIDO: Responsividade do rodapé */
         }
         @media (max-width: 480px) {
             h1 { font-size: 2em; }
@@ -528,9 +450,6 @@
 <body>
     <header class="main-header">
         <div class="container">
-            <div class="logo">
-                <a href="#"><img src="logo.png" alt="Logotipo da Empresa"></a>
-            </div>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#planos">Nossos Planos</a></li>
@@ -668,8 +587,6 @@
         </div>
     </section>
 
-    
-
     <script>
         // script.js
         document.addEventListener('DOMContentLoaded', () => {
@@ -681,9 +598,8 @@
 
             // Função para atualizar o seletor e o card selecionado
             function updateSelectedPlan(planName, planDetails) {
-                const fullPlanText = `${planName}${planDetails ? ' - ' + planDetails : ''}`; // Constrói o texto completo do plano
-
-                // Encontra a opção correspondente pelo valor completo e a seleciona
+                // Aqui, o valor que será setado no select continua sendo o nome + detalhes para garantir que a opção correta seja selecionada.
+                const fullPlanText = `${planName}${planDetails ? ' - ' + planDetails : ''}`; 
                 selectedPlanSelect.value = fullPlanText;
 
                 // Remove a classe 'selected' de todos os cards
@@ -700,7 +616,10 @@
 
             // 1. Popular o SELECT com os planos ao carregar a página
             function populatePlanSelect() {
-                // Cria a opção padrão
+                // Remove a opção padrão existente para evitar duplicidade
+                selectedPlanSelect.innerHTML = ''; 
+
+                // Cria uma *nova* opção padrão que não tem valor e é apenas um placeholder
                 const defaultOption = document.createElement('option');
                 defaultOption.value = "";
                 defaultOption.textContent = "Selecione um plano";
@@ -708,12 +627,12 @@
 
                 planCards.forEach(card => {
                     const planName = card.dataset.planName;
-                    const planDetails = card.dataset.planDetails;
+                    const planDetails = card.dataset.planDetails; // Mantém para o 'value' e para a mensagem do WhatsApp
                     const option = document.createElement('option');
-                    // O VALOR da opção continua sendo o texto completo para facilitar o resgate
+                    // O VALOR da opção continua sendo o texto completo para facilitar o resgate no WhatsApp
                     option.value = `${planName}${planDetails ? ' - ' + planDetails : ''}`;
-                    // O TEXTO VISÍVEL da opção é APENAS o nome do plano (ou nome + detalhes se for o caso)
-                    option.textContent = `${planName}${planDetails ? ' - ' + planDetails : ''}`; 
+                    // O TEXTO VISÍVEL da opção agora é APENAS o nome do plano (ex: "Plano Mensal")
+                    option.textContent = planName; 
                     selectedPlanSelect.appendChild(option);
                 });
             }
@@ -725,7 +644,7 @@
                     const planName = card.dataset.planName;
                     const planDetails = card.dataset.planDetails;
                     updateSelectedPlan(planName, planDetails); // Atualiza o select e o card
-                    document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
+                    // REMOVIDO: document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
                 });
 
                 const selectButton = card.querySelector('.select-plan-btn');
@@ -735,7 +654,7 @@
                         const planName = card.dataset.planName;
                         const planDetails = card.dataset.planDetails;
                         updateSelectedPlan(planName, planDetails); // Atualiza o select e o card
-                        document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
+                        // REMOVIDO: document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
                     });
                 }
             });
@@ -759,7 +678,7 @@
                     }
                     updateSelectedPlan(planName, planDetails); // Atualiza o card correspondente
                 }
-                document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
+                // REMOVIDO: document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
             });
 
 
