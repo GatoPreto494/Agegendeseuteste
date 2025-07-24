@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -146,7 +145,27 @@
             font-size: 1.8em;
             color: var(--heading-color);
             cursor: pointer;
+            /* Adicionado: Animação para o menu hambúrguer */
+            animation: bounce 2s infinite 3s; /* Animação após 3s de atraso, infinita */
+            transform-origin: center; /* Garante que o movimento seja centralizado */
         }
+        .hamburger-menu:hover {
+            animation: none; /* Para a animação ao passar o mouse */
+        }
+
+        /* Keyframes para a animação de "tremor" */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(0);
+            }
+            40% {
+                transform: translateX(-5px);
+            }
+            60% {
+                transform: translateX(5px);
+            }
+        }
+
         /* --- 2. Seção Herói (Hero Section) --- */
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-bg.jpg') no-repeat center center/cover;
@@ -185,6 +204,7 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 50px;
+            justify-content: center; /* Centraliza os cards */
         }
         .plan-card {
             background-color: var(--card-bg);
@@ -452,9 +472,11 @@
         <div class="container">
             <nav class="main-nav">
                 <ul>
+                    <li><a href="#quem-somos">Quem Sou</a></li>
                     <li><a href="#planos">Nossos Planos</a></li>
-                    <li><a href="#agendamento">Agendar Teste</a></li>
+                    <li><a href="#downloads">Baixar App</a></li>
                     <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#agendamento">Agendar Teste</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
@@ -473,44 +495,103 @@
         </div>
     </section>
 
+    <section id="quem-somos" class="section">
+        <div class="container" style="text-align: center;">
+            <h2>📺 Quem Sou e o Que Faço</h2>
+            <p style="max-width: 800px; margin: 0 auto 20px; font-size: 1.1em; line-height: 1.8;">
+                Oi! Tudo bem? Eu trabalho com aplicativos e soluções para TV, transformando qualquer televisão — seja Smart ou comum — em um centro completo de entretenimento.
+            </p>
+            <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.1em; line-height: 1.8;">
+                Você vai conseguir assistir **canais ao vivo**, **filmes**, **séries**, **futebol**, **desenhos** e muito mais, tudo de forma prática, rápida e com suporte direto comigo.
+            </p>
+            <a href="#downloads" class="btn btn-primary">Ver Apps e Começar</a>
+        </div>
+    </section>
+    
+    ---
+
     <section id="planos" class="plans-section">
         <div class="container">
             <h2>Escolha o Plano Perfeito para Você</h2>
             <div class="plans-grid">
-                <div class="plan-card" data-plan-name="Plano Mensal" data-plan-details="Teste Gratuito">
+                <div class="plan-card" data-plan-name="Plano Mensal" data-plan-details="Ideal para Teste Gratuito">
                     <span class="plan-type-icon"><i class="far fa-calendar-alt"></i></span>
-                    <h3>Plano Mensal - Essencial</h3>
-                    <p class="price">R$ <span>99,90</span>/mês</p>
+                    <h3>Plano Mensal</h3>
+                    <p class="price">R$ <span>25</span>/mês</p>
                     <button class="btn btn-secondary select-plan-btn">Escolher Plano</button>
                 </div>
 
-                <div class="plan-card" data-plan-name="Plano Trimestral" data-plan-details="TV com 150 Canais HD + Apps Básicos">
+                <div class="plan-card" data-plan-name="Plano Trimestral" data-plan-details="Desconto no pagamento à vista">
                     <span class="plan-type-icon"><i class="fas fa-calendar-alt"></i></span>
-                    <h3>Plano Trimestral - Avançado</h3>
-                    <p class="price">R$ <span>119,90</span>/mês</p>
-                    <p class="saving">Economize R$ 30,00 por trimestre!</p>
+                    <h3>Plano Trimestral</h3>
+                    <p class="price">R$ <span>70</span>/trimestre</p>
+                    <p class="saving">Economize R$ 5,00 por trimestre!</p>
                     <button class="btn btn-secondary select-plan-btn">Escolher Plano</button>
                 </div>
 
-                <div class="plan-card" data-plan-name="Plano Semestral" data-plan-details="TV com 200 Canais Full HD + Apps Essenciais">
+                <div class="plan-card" data-plan-name="Plano Semestral" data-plan-details="Desconto ainda maior!">
                     <span class="plan-type-icon"><i class="fas fa-calendar-check"></i></span>
-                    <h3>Plano Semestral - Premium</h3>
-                    <p class="price">R$ <span>149,90</span>/mês</p>
-                    <p class="saving">Economize R$ 90,00 por semestre!</p>
+                    <h3>Plano Semestral</h3>
+                    <p class="price">R$ <span>135</span>/semestre</p>
+                    <p class="saving">Economize R$ 15,00 por semestre!</p>
                     <button class="btn btn-secondary select-plan-btn">Escolher Plano</button>
                 </div>
 
-                <div class="plan-card featured-plan" data-plan-name="Plano Anual" data-plan-details="TV com 250 Canais 4K + Apps Premium">
+                <div class="plan-card featured-plan" data-plan-name="Plano Anual" data-plan-details="Melhor custo-benefício">
                     <span class="plan-type-icon"><i class="fas fa-calendar-day"></i></span>
                     <span class="badge">Mais Popular</span>
-                    <h3>Plano Anual - Master</h3>
-                    <p class="price">R$ <span>189,90</span>/mês</p>
-                    <p class="saving">Economize R$ 360,00 por ano!</p>
+                    <h3>Plano Anual</h3>
+                    <p class="price">R$ <span>220</span>/ano</p>
+                    <p class="saving">Economize R$ 80,00 por ano!</p>
                     <button class="btn btn-primary select-plan-btn">Escolher Plano</button>
                 </div>
             </div>
         </div>
     </section>
+
+    ---
+
+    <section id="downloads" class="plans-section" style="background-color: var(--card-bg);">
+        <div class="container">
+            <h2>Baixe o App Agora e Comece Seu Teste Gratuito!</h2>
+            <p class="section-description" style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+                Ofereço diferentes aplicativos para garantir a melhor experiência na sua TV. Escolha o ideal para você ou entre em contato para orientação.
+            </p>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <span class="plan-type-icon"><i class="fas fa-tv"></i></span>
+                    <h3>Aplicativo para TV Box/Smart TVs Android</h3>
+                    <p>Compatível com a maioria das TV Boxes, Smart TVs com Android e celulares Android (para espelhamento).</p>
+                    <a href="[LINK_DO_SEU_APP_PRINCIPAL_TV.apk]" class="btn btn-primary select-plan-btn" target="_blank">
+                        <i class="fas fa-download"></i> Baixar para TV
+                    </a>
+                </div>
+
+                <div class="plan-card">
+                    <span class="plan-type-icon"><i class="fas fa-mobile-alt"></i></span>
+                    <h3>Aplicativo para Celular (Android)</h3>
+                    <p>Assista no seu smartphone ou use para espelhar na TV. Teste gratuito de 3 dias ao instalar!</p>
+                    <a href="[LINK_DO_SEU_APP_PRINCIPAL_CELULAR.apk]" class="btn btn-primary select-plan-btn" target="_blank">
+                        <i class="fas fa-download"></i> Baixar para Celular
+                    </a>
+                </div>
+
+                <div class="plan-card">
+                    <span class="plan-type-icon"><i class="fas fa-question-circle"></i></span>
+                    <h3>Não tem Android ou quer outra opção?</h3>
+                    <p>Para Smart TVs (LG, Samsung) ou TVs mais limitadas, podemos usar outros apps como TiviPlayer ou DupleCast. Fale comigo!</p>
+                    <a href="https://api.whatsapp.com/send?phone=5515998627702&text=Olá! Gostaria de saber qual app é ideal para minha TV e como funciona o teste." class="btn btn-accent select-plan-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Converse no WhatsApp
+                    </a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 40px; font-size: 1.1em; font-weight: 600;">
+                * Ao instalar qualquer um dos apps acima, seu teste gratuito de 3 dias é ativado automaticamente!
+            </p>
+        </div>
+    </section>
+
+    ---
 
     <section id="agendamento" class="appointment-section">
         <div class="container">
@@ -519,8 +600,7 @@
                 <div class="form-group">
                     <label for="selectedPlan">Plano Escolhido:</label>
                     <select id="selectedPlan" name="selectedPlan" required>
-                        <option value="">Selecione um plano</option>
-                    </select>
+                        </select>
                 </div>
                 <div class="form-group">
                     <label for="appointmentDate">Data Preferida:</label>
@@ -530,12 +610,12 @@
                 <div class="form-group">
                     <label>Horário Preferido:</label>
                     <div class="radio-group">
-                        <input type="radio" id="timeMorning" name="appointmentTime" value="Manhã (08h-12h)" required>
-                        <label for="timeMorning">Manhã (08h-12h)</label>
-                        <input type="radio" id="timeAfternoon" name="appointmentTime" value="Tarde (13h-17h)">
-                        <label for="timeAfternoon">Tarde (13h-17h)</label>
-                        <input type="radio" id="timeFullDay" name="appointmentTime" value="Comercial (08h-17h)">
-                        <label for="timeFullDay">Comercial (08h-17h)</label>
+                        <input type="radio" id="timeMorning" name="appointmentTime" value="Manhã (10:20h-12:30h) - Dias de Semana" required>
+                        <label for="timeMorning">Manhã (10:20h-12:30h)</label>
+                        <input type="radio" id="timeAfternoon" name="appointmentTime" value="Tarde/Noite (19:30h-22h) - Dias de Semana">
+                        <label for="timeAfternoon">Tarde/Noite (19:30h-22h)</label>
+                        <input type="radio" id="timeWeekend" name="appointmentTime" value="Finais de Semana (10h em diante)">
+                        <label for="timeWeekend">Finais de Semana (10h em diante)</label>
                     </div>
                 </div>
                 <h3>Seus Dados para Contato:</h3>
@@ -559,31 +639,58 @@
         </div>
     </section>
 
+    ---
+
     <section id="como-funciona" class="how-it-works-section">
         <div class="container">
-            <h2>Como Funciona a Ativação do Seu Plano de TV</h2>
+            <h2>Como Funciona o Teste e a Ativação?</h2>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-icon"><i class="fas fa-check-circle"></i></div>
-                    <h3>1. Confirmação</h3>
-                    <p>Nossa equipe entrará em contato para confirmar os detalhes do seu agendamento.</p>
+                    <h3>1. Baixe e Teste Grátis</h3>
+                    <p>Instale o app na sua TV ou celular. Você ganha automaticamente 3 dias de teste grátis para conhecer tudo!</p>
                 </div>
                 <div class="step-card">
                     <div class="step-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>2. Suporte via WhatsApp</h3>
-                    <p> Para identificar o aparelho da TV por foto/vídeo (videochamada se necessário) e te orientar o app para ser instalado.</p>
+                    <h3>2. Escolha o App Ideal</h3>
+                    <p>Trabalho com: **[Seu Aplicativo Principal]** (TV Box Android), **TiviPlayer** (Smart TVs LG/Samsung) e **DupleCast** (TVs limitadas). Me informe o modelo da sua TV e eu te ajudo a escolher!</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-tv"></i></div>
-                    <h3>3. Configuração e Testes</h3>
-                    <p>A configuração é guiada e fazemos todos os testes para garantir o funcionamento perfeito da sua TV.</p>
+                    <div class="step-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3>3. Ativação Rápida via WhatsApp</h3>
+                    <p>No 3º dia, entre em contato! Você ativa sua assinatura e o pagamento é simples via Pix, cartão ou transferência. O suporte é direto comigo, no WhatsApp!</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-power-off"></i></div>
-                    <h3>4. Ativação</h3>
-                    <p>Seu serviço de TV estará pronto para uso! Aproveite seu novo entretenimento sem preocupações.</p>
+                    <div class="step-icon"><i class="fas fa-box"></i></div>
+                    <h3>4. Precisa de uma TV Box?</h3>
+                    <p>Para TVs antigas, tenho **TV Box configurada por R$ 150**, pronta para usar e com 2 meses de garantia! Perfeito para você!</p>
                 </div>
             </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="font-size: 1.1em; color: var(--card-bg); margin-bottom: 20px;">
+                    **Entrega da TV Box:** Para o centro de São Paulo, posso enviar via Uber/motoboy (taxa de R$ 10 a R$ 20) ou você pode retirar. Para outras cidades/estados, envio pelos Correios (frete conforme CEP).
+                </p>
+                <a href="https://api.whatsapp.com/send?phone=5515998627702&text=Olá! Gostaria de saber mais sobre a TV Box ou sobre os aplicativos para TV." class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Converse no WhatsApp!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="contato" class="section" style="background-color: var(--background-light); padding: 40px 0;">
+        <div class="container" style="text-align: center;">
+            <h2>📞 Fale Comigo!</h2>
+            <p style="font-size: 1.1em; margin-bottom: 30px;">
+                Quer saber qual app funciona na sua TV? Ou quer a TV Box prontinha? Me chama no WhatsApp que eu te explico tudo rapidinho!
+            </p>
+            <a href="https://api.whatsapp.com/send?phone=5515998627702&text=Olá! Gostaria de falar com você sobre os planos e apps de TV." class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> CLIQUE AQUI PARA ME CHAMAR NO WHATSAPP
+            </a>
+            <p style="margin-top: 20px; color: var(--secondary-color);">
+                Atendimento direto e personalizado para você!
+            </p>
         </div>
     </section>
 
@@ -596,18 +703,60 @@
             const sendWhatsappBtn = document.getElementById('sendWhatsappBtn');
             const dateInput = document.getElementById('appointmentDate');
 
+            // Array para armazenar os dados dos planos de forma mais organizada
+            const plansData = [
+                { name: "Plano Mensal", price: "25", period: "mês", details: "Ideal para Teste Gratuito" },
+                { name: "Plano Trimestral", price: "70", period: "trimestre", saving: "Economize R$ 5,00 por trimestre!", details: "Desconto no pagamento à vista" },
+                { name: "Plano Semestral", price: "135", period: "semestre", saving: "Economize R$ 15,00 por semestre!", details: "Desconto ainda maior!" },
+                { name: "Plano Anual", price: "220", period: "ano", saving: "Economize R$ 80,00 por ano!", details: "Melhor custo-benefício" }
+            ];
+
+            // Função para popular dinamicamente os cards de planos na seção #planos
+            function populatePlanCards() {
+                const plansGrid = document.querySelector('#planos .plans-grid');
+                plansGrid.innerHTML = ''; // Limpa os cards existentes
+
+                plansData.forEach((plan, index) => {
+                    const planCard = document.createElement('div');
+                    planCard.classList.add('plan-card');
+                    if (plan.name === "Plano Anual") { // Adiciona a classe featured-plan ao plano Anual
+                        planCard.classList.add('featured-plan');
+                    }
+                    planCard.setAttribute('data-plan-name', plan.name);
+                    planCard.setAttribute('data-plan-details', plan.details);
+
+                    let iconClass = '';
+                    if (plan.period === "mês") iconClass = 'far fa-calendar-alt';
+                    else if (plan.period === "trimestre") iconClass = 'fas fa-calendar-alt';
+                    else if (plan.period === "semestre") iconClass = 'fas fa-calendar-check';
+                    else if (plan.period === "ano") iconClass = 'fas fa-calendar-day';
+
+                    planCard.innerHTML = `
+                        <span class="plan-type-icon"><i class="${iconClass}"></i></span>
+                        ${plan.name === "Plano Anual" ? '<span class="badge">Mais Popular</span>' : ''}
+                        <h3>${plan.name}</h3>
+                        <p class="price">R$ <span>${plan.price}</span>/${plan.period}</p>
+                        ${plan.saving ? `<p class="saving">${plan.saving}</p>` : ''}
+                        <button class="btn ${plan.name === "Plano Anual" ? 'btn-primary' : 'btn-secondary'} select-plan-btn">Escolher Plano</button>
+                    `;
+                    plansGrid.appendChild(planCard);
+                });
+            }
+            populatePlanCards(); // Chama a função para popular os cards
+
+            // Re-seleciona os plan cards após serem populados para adicionar os event listeners
+            const updatedPlanCards = document.querySelectorAll('#planos .plan-card');
+
+
             // Função para atualizar o seletor e o card selecionado
             function updateSelectedPlan(planName, planDetails) {
-                // Aqui, o valor que será setado no select continua sendo o nome + detalhes para garantir que a opção correta seja selecionada.
-                const fullPlanText = `${planName}${planDetails ? ' - ' + planDetails : ''}`; 
+                const fullPlanText = `${planName}${planDetails ? ' - ' + planDetails : ''}`;
                 selectedPlanSelect.value = fullPlanText;
 
-                // Remove a classe 'selected' de todos os cards
                 document.querySelectorAll('.plan-card').forEach(pCard => {
                     pCard.classList.remove('selected');
                 });
 
-                // Encontra e adiciona a classe 'selected' ao card correspondente
                 const correspondingCard = document.querySelector(`.plan-card[data-plan-name="${planName}"][data-plan-details="${planDetails}"]`);
                 if (correspondingCard) {
                     correspondingCard.classList.add('selected');
@@ -616,35 +765,36 @@
 
             // 1. Popular o SELECT com os planos ao carregar a página
             function populatePlanSelect() {
-                // Remove a opção padrão existente para evitar duplicidade
-                selectedPlanSelect.innerHTML = ''; 
+                selectedPlanSelect.innerHTML = '<option value="">Selecione um plano</option>'; // Limpa e adiciona placeholder
 
-                // Cria uma *nova* opção padrão que não tem valor e é apenas um placeholder
-                const defaultOption = document.createElement('option');
-                defaultOption.value = "";
-                defaultOption.textContent = "Selecione um plano";
-                selectedPlanSelect.appendChild(defaultOption);
-
-                planCards.forEach(card => {
-                    const planName = card.dataset.planName;
-                    const planDetails = card.dataset.planDetails; // Mantém para o 'value' e para a mensagem do WhatsApp
+                plansData.forEach(plan => {
                     const option = document.createElement('option');
-                    // O VALOR da opção continua sendo o texto completo para facilitar o resgate no WhatsApp
-                    option.value = `${planName}${planDetails ? ' - ' + planDetails : ''}`;
-                    // O TEXTO VISÍVEL da opção agora é APENAS o nome do plano (ex: "Plano Mensal")
-                    option.textContent = planName; 
+                    option.value = `${plan.name} - R$ ${plan.price}/${plan.period}`;
+                    option.textContent = `${plan.name} - R$ ${plan.price}/${plan.period}`; // Exibe preço no select
                     selectedPlanSelect.appendChild(option);
                 });
             }
             populatePlanSelect(); // Chama a função para popular o select
 
+
             // 2. Comportamento ao clicar no CARD (ou botão "Escolher Plano")
-            planCards.forEach(card => {
+            updatedPlanCards.forEach(card => {
                 card.addEventListener('click', (event) => {
                     const planName = card.dataset.planName;
-                    const planDetails = card.dataset.planDetails;
-                    updateSelectedPlan(planName, planDetails); // Atualiza o select e o card
-                    // REMOVIDO: document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
+                    const planDetails = card.dataset.planDetails; // Usado para identificar o card
+                    
+                    // Buscar o plano correspondente no plansData para pegar o preço e período corretos
+                    const selectedPlan = plansData.find(p => p.name === planName && p.details === planDetails);
+                    if (selectedPlan) {
+                         const fullPlanValue = `${selectedPlan.name} - R$ ${selectedPlan.price}/${selectedPlan.period}`;
+                         selectedPlanSelect.value = fullPlanValue; // Define o valor do select com o plano completo
+
+                        // Remove a classe 'selected' de todos os cards
+                        document.querySelectorAll('.plan-card').forEach(pCard => {
+                            pCard.classList.remove('selected');
+                        });
+                        card.classList.add('selected'); // Adiciona a classe 'selected' ao card clicado
+                    }
                 });
 
                 const selectButton = card.querySelector('.select-plan-btn');
@@ -653,8 +803,19 @@
                         event.stopPropagation(); // Impede que o clique no botão se propague para o card
                         const planName = card.dataset.planName;
                         const planDetails = card.dataset.planDetails;
-                        updateSelectedPlan(planName, planDetails); // Atualiza o select e o card
-                        // REMOVIDO: document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Buscar o plano correspondente no plansData para pegar o preço e período corretos
+                        const selectedPlan = plansData.find(p => p.name === planName && p.details === planDetails);
+                        if (selectedPlan) {
+                            const fullPlanValue = `${selectedPlan.name} - R$ ${selectedPlan.price}/${selectedPlan.period}`;
+                            selectedPlanSelect.value = fullPlanValue; // Define o valor do select com o plano completo
+
+                            // Remove a classe 'selected' de todos os cards
+                            document.querySelectorAll('.plan-card').forEach(pCard => {
+                                pCard.classList.remove('selected');
+                            });
+                            card.classList.add('selected'); // Adiciona a classe 'selected' ao card do botão clicado
+                        }
                     });
                 }
             });
@@ -662,31 +823,28 @@
             // 3. Comportamento ao alterar o SELECT diretamente
             selectedPlanSelect.addEventListener('change', () => {
                 const selectedValue = selectedPlanSelect.value;
-                if (selectedValue === "") {
-                    // Se "Selecione um plano" for escolhido, desmarca todos os cards
-                    document.querySelectorAll('.plan-card').forEach(pCard => {
-                        pCard.classList.remove('selected');
-                    });
-                } else {
-                    // Tenta extrair nome e detalhes do plano do valor selecionado
-                    let planName = selectedValue;
-                    let planDetails = '';
-                    const match = selectedValue.match(/(.*) - (.*)/);
-                    if (match) {
-                        planName = match[1].trim();
-                        planDetails = match[2].trim();
+                document.querySelectorAll('.plan-card').forEach(pCard => {
+                    pCard.classList.remove('selected');
+                });
+
+                if (selectedValue !== "") {
+                    // Tenta encontrar o plano correspondente pelo valor completo no select
+                    const selectedPlanData = plansData.find(p => `${p.name} - R$ ${p.price}/${p.period}` === selectedValue);
+                    
+                    if (selectedPlanData) {
+                        const correspondingCard = document.querySelector(`.plan-card[data-plan-name="${selectedPlanData.name}"][data-plan-details="${selectedPlanData.details}"]`);
+                        if (correspondingCard) {
+                            correspondingCard.classList.add('selected');
+                        }
                     }
-                    updateSelectedPlan(planName, planDetails); // Atualiza o card correspondente
                 }
-                // REMOVIDO: document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
             });
 
-
-            // Formatar a data (para exibição no WhatsApp, pois o input date já cuida do front)
+            // Formatar a data para DD/MM (conforme sua preferência salva de 10/07)
             function formatarData(dataISO) {
                 if (!dataISO) return '';
                 const [ano, mes, dia] = dataISO.split('-');
-                return `${dia}/${mes}`; // Formato DD/MM
+                return `${dia}/${mes}`;
             }
 
             // Gerar mensagem do WhatsApp ao enviar o formulário
@@ -694,20 +852,18 @@
                 e.preventDefault(); // Evita o envio padrão do formulário
 
                 // Coletar dados do formulário
-                const plano = selectedPlanSelect.value; // Pega o valor COMPLETO do SELECT
+                const plano = selectedPlanSelect.value;
                 const dataAgendamento = formatarData(dateInput.value);
                 const horarioAgendamento = document.querySelector('input[name="appointmentTime"]:checked')?.value || 'Não informado';
                 const nome = document.getElementById('clientName').value;
                 const telefone = document.getElementById('clientPhone').value;
                 const email = document.getElementById('clientEmail').value;
 
-                // Validação simples para garantir que um plano foi selecionado
                 if (!plano || plano === "") {
                     alert("Por favor, selecione um plano antes de enviar.");
                     return;
                 }
 
-                // Montar a mensagem
                 const whatsappMessage = `Olá! Gostaria de agendar o teste Gratuito da TV.
 *Plano Escolhido:* ${plano}
 *Data Preferida:* ${dataAgendamento}
@@ -719,29 +875,24 @@
 *Email:* ${email || 'Não informado'}
 
 Por favor, confirme a disponibilidade e me oriente sobre o suporte para ativação da TV via WhatsApp. Obrigado!
-                `.trim(); // O .trim() remove espaços em branco extras no início/fim
 
-                // Codificar a mensagem para URL
+*Observação sobre a TV Box e Entrega:*
+Para o centro de São Paulo, posso enviar via Uber/motoboy (taxa de R$ 10 a R$ 20) ou você pode retirar. Para outras cidades/estados, envio pelos Correios (frete conforme CEP).
+                `.trim();
+
                 const encodedMessage = encodeURIComponent(whatsappMessage);
-
-                // Número de telefone para o WhatsApp (substitua pelo seu!)
-                const phoneNumber = "5515998627702"; // Ex: 55 DDD NÚMERO
-
-                // Criar o link do WhatsApp
+                const phoneNumber = "5515998627702"; // **ATENÇÃO: SUBSTITUA PELO SEU NÚMERO DE TELEFONE REAL**
                 const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
-
-                // Abrir o WhatsApp
                 window.open(whatsappLink, '_blank');
             });
 
-            // Lógica do menu hambúrguer (simplificado)
+            // Lógica do menu hambúrguer
             const hamburgerBtn = document.querySelector('.hamburger-menu');
             const mainNav = document.querySelector('.main-nav');
 
             hamburgerBtn.addEventListener('click', () => {
                 mainNav.classList.toggle('active');
             });
-            // Ocultar menu ao clicar em um link (apenas para mobile)
             mainNav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     if (mainNav.classList.contains('active')) {
